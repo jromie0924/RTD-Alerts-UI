@@ -1,0 +1,12 @@
+<h2>Update API Keys</h2>
+<span class="ui-float-label inline-textbox">
+    <input id="consumer-float" type="text" size="30" [(ngModel)]="consumer" pInputText> 
+    <label for="consumer-float">Consumer API Key</label>
+</span>
+<span class="ui-float-label inline-textbox">
+        <input id="secret-float" type="text" size="30" [(ngModel)]="consumerSecret" pInputText> 
+        <label for="secret-float">Consumer-Secret API Key</label>
+</span>
+<span class="submit-button">
+    <p-button label="Update Keys" (click)="updateApiKeys()" [disabled]="updateApiButtonDisabled"></p-button>
+</span>

@@ -1,10 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { DbUpdaterComponent } from "./components/db-updater/components/db-updater.component";
+
+const routes: Routes = [
+  { path: "", redirectTo: "test", pathMatch: "full" },
+  { path: "test", component: DbUpdaterComponent }
+];
 
 @NgModule({
-  imports: [
-    CommonModule
+  exports: [
+    RouterModule
   ],
-  declarations: []
+  imports: [
+    RouterModule.forRoot(routes)
+  ]
 })
-export class AppRoutingModule { }
+
+export class AppRoutingModule {}
