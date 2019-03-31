@@ -3,8 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { DbUpdaterComponent } from "./components/db-updater/components/db-updater.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "test", pathMatch: "full" },
-  { path: "test", component: DbUpdaterComponent }
+  { path: "", component: DbUpdaterComponent }
 ];
 
 @NgModule({
