@@ -1,11 +1,14 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
+import { DbUpdaterService } from "../services/db-updater.service";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
     selector: "app-db-updater",
     templateUrl: "db-updater.component.html",
     styleUrls: ["db-updater.component.css"]
 })
-export class DbUpdaterComponent {
+export class DbUpdaterComponent implements OnDestroy {
     set consumer(val: string) {
         this._consumer = val;
         this.updateApiButtonDisabled = !(val && this.consumerSecret);
@@ -32,10 +35,22 @@ export class DbUpdaterComponent {
 
     private _consumerSecret: string;
 
-    constructor() {
+    private unsubscribe = new Subject();
+
+    constructor(
+        private dbUpdaterService: DbUpdaterService
+    ) {
     }
 
     updateApiKeys() {
-        // TODO: make service call to update api keys
+        this.dbUpdaterService.updateApiKeys(this.consumer, this.consumerSecret)
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe(res => {
+            console.log(res);
+        });
+    }
+
+    ngOnDestroy() {
+        this.unsubscribe.next();
     }
 }

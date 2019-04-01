@@ -8,11 +8,11 @@ import { DbUpdaterComponent } from "./components/db-updater/components/db-update
 import { FormsModule } from "@angular/forms";
 import { DbUpdaterModule } from "./components/db-updater/db-updater.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ApiService } from "./services/api.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    // DbUpdaterComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +22,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     DbUpdaterModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

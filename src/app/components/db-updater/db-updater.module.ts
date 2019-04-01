@@ -4,6 +4,8 @@ import { FormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ButtonModule } from "primeng/button";
+import { HttpClientModule } from "@angular/common/http";
+import { DbUpdaterService } from "./services/db-updater.service";
 
 @NgModule({
     declarations: [
@@ -13,7 +15,11 @@ import { ButtonModule } from "primeng/button";
         FormsModule,
         InputTextModule,
         BrowserAnimationsModule,
-        ButtonModule
+        ButtonModule,
+        HttpClientModule
+    ],
+    providers: [
+        DbUpdaterService
     ]
 })
 export class DbUpdaterModule {}
